@@ -22,16 +22,20 @@ Install Elasticsearch and kibana first.
 
 4. Change 'gte' and 'ite' to suit your requirements. Check range query - https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html
 
+5. You can change log level to 'info', 'warn' etc according to your requirement. 
 
---->  watcher_OTRS_action.json
+
+--->  watcher_index_action.json
 
 1. The watcher catches log entries in which the field 'message' consists of search strings Query 1 / Query 2 / Query 3. Change accordingly.
 
 2. Right now watcher looks for all indices. For changing the watcher to look for particular index or indices, change '*' in indices field to name of the indices.
 
-3. Check "watcher-index-2023.05.30-000001" for log entries that will be created with header 'watcher action'.
+3. Check "watcher-index-2023.05.30-000001" for log entries that will be created with header 'watcher action'. Creating index POST request has been provided.
 
 4. Change 'gte' and 'ite' to suit your requirements. Check range query - https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html
+
+5. You can change log level to 'info', 'warn' etc according to your requirement. 
 
    
 --->  watcher_OTRS_action.json
