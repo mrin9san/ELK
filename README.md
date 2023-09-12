@@ -12,7 +12,9 @@ The watchers are demonstration of how you can integrate a logging, indexing and 
 
 Install Elasticsearch and kibana first. 
 
+
 --->  watcher_logging_action.json
+
 
 1. The watcher catches log entries in which the field 'message' consists of search strings Query 1 / Query 2 / Query 3. Change accordingly.
 
@@ -25,7 +27,10 @@ Install Elasticsearch and kibana first.
 5. You can change log level to 'info', 'warn' etc according to your requirement. 
 
 
+
+
 --->  watcher_index_action.json
+
 
 1. The watcher catches log entries in which the field 'message' consists of search strings Query 1 / Query 2 / Query 3. Change accordingly.
 
@@ -37,8 +42,11 @@ Install Elasticsearch and kibana first.
 
 5. You can change log level to 'info', 'warn' etc according to your requirement. 
 
+
+
    
 --->  watcher_OTRS_action.json
+
 
 1. The watcher catches log entries in which the field 'message' consists of search strings Query 1 / Query 2 / Query 3. Change accordingly. 
 
