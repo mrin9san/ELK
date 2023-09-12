@@ -18,7 +18,7 @@ Install Elasticsearch and kibana first.
 
 2. Right now watcher looks for all indices. For changing the watcher to look for particular index or indices, change '*' in indices field to name of the indices.
 
-3. Check /var/log/elasticsearch/elastic.log for log entries that will be created with header 'watcher action'.
+3. Check /var/log/elasticsearch/elastic.log for log entries that will be created with header 'Watcher executed perfectly'.
 
 4. Change 'gte' and 'ite' to suit your requirements. Check range query - https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html
 
