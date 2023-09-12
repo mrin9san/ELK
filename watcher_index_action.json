@@ -1,0 +1,67 @@
+{
+  "trigger": {
+    "schedule": {
+      "interval": "10s"
+    }
+  },
+  "input": {
+    "search": {
+      "request": {
+        "search_type": "query_then_fetch",
+        "indices": [
+          "*"
+        ],
+        "rest_total_hits_as_int": true,
+        "body": {
+          "query": {
+            "bool": {
+              "must": [
+                {
+                  "query_string": {
+                    "default_field": "message",
+                   "query": "\"Query string 1\" OR \"Query string 2\" OR \"Query string 3\""
+                  }
+                },
+                {
+                  "range": {
+                    "@timestamp": {
+                      "gte": "now-30m",
+                      "lte": "now"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "condition": {
+    "compare": {
+      "ctx.payload.hits.total": {
+        "gte": 1
+      }
+    }
+  },
+  "actions": {
+    "log": {
+      "logging": {
+        "level": "info",
+        "text": "Watcher just triggered, message {{ctx.payload.hits.hits.0._source.message}}"
+      }
+    },
+    "index_payload": {
+      "transform": {
+        "script": {
+          "source": "[ '_doc': ctx.payload.hits.hits.stream().map(h -> h._source).collect(Collectors.toList()) ];",
+          "lang": "painless"
+        }
+      },
+      "index": {
+        "index": "watcher-index-2023.05.30-000001",
+        "execution_time_field": "@timestamp"
+      }
+    }
+  }
+}
