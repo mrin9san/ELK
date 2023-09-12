@@ -1,10 +1,24 @@
 # ELK-watcher
+
 Elasticsearch Logstash Kibana Filebeat 
 
 For details on how an elasticsearch watcher works - https://www.elastic.co/guide/en/kibana/current/watcher-ui.html
 
 # Info
-The watcher code shows how you can integrate a webhook action of Elasticsearch to a watcher. Here the webhook is a OTRS endpoint for creating OTRS tickets. Check the webhook body and change the needful like ip, username and password accordingly. 
+
+The watcher is a demonstration of how you can integrate a webhook action of Elasticsearch to a watcher. Here the webhook is an OTRS endpoint for creating OTRS tickets. More info on OTRS - https://otrs.com/ 
+
+# Build
+
+1.The watcher catches log entries in which the field 'message' consists of search strings Query 1 / Query 2 / Query 3. Change accordingly. 
+
+2. Right now watcher looks for all indices. For changing the watcher to look for particular index or indices, change '*' in indices field to name of the indices. 
+
+3. Check the webhook body and change the needful like ip, username and password accordingly.
+
+4. This is a http webhook. You might need to change the setting if you have an ssl certified OTRS instance.
+
+5. Change 'gte' and 'ite' to suit your requirements. Check range query - https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html
 
 
 
