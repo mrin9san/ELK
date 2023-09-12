@@ -10,6 +10,8 @@ The watcher is a demonstration of how you can integrate a webhook action of Elas
 
 # Build
 
+Install Elasticsearch and kibana first. 
+
 1.The watcher catches log entries in which the field 'message' consists of search strings Query 1 / Query 2 / Query 3. Change accordingly. 
 
 2. Right now watcher looks for all indices. For changing the watcher to look for particular index or indices, change '*' in indices field to name of the indices. 
