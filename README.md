@@ -59,7 +59,15 @@ Install Elasticsearch and kibana first.
 5. Change 'gte' and 'ite' to suit your requirements. Check range query - https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html
 
 
+--->  ingest_pipelines.json
 
+Pipeline for automatically applying Grok filters for parsing Network log data
+
+Example 
+1. Nov  21 00:00:30 localhost abc[1211]: 21-Nov 00:00  Message delivery ERROR: Message delivery error: Unable to store data in database.
+2. 168 <164>1 2001-02-24T08:35:51-05:00 65/49 %CST-1-14452 - - - Deny tcp src wan:112.112.112.112/53345 dst wan:112.112.112.112/3332 by access-group \"acess_list\" [0x1, 1x1]
+3. 00:00:46: %LINK-3-UPDOWN: Interface Port-channel1, changed state to up
+4. 0:00:48: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed 
 
 
 
