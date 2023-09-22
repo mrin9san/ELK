@@ -24,3 +24,35 @@ POST _ingest/pipeline/_simulate
   }
   ]
 }
+
+#####################################Second one ##############################################
+
+POST _ingest/pipeline/_simulate
+{
+  "pipeline": {
+  "description" : "parse multiple patterns",
+  "processors": [
+    {
+      "grok": {
+        "field": "message",
+        "ignore_missing": true,
+        "patterns": ["%{First}","%{Second}","%{Third}","%{Fourth}","%{Fifth}"],
+        "pattern_definitions" : {
+          "First" : "(%{LOGLEVEL:loglevel_postfix}: )%{HOSTNAME:postfix_client_hostname}?\\[%{IP:postfix_client_ip}\\](:%{INT:postfix_client_port})?(: %{GREEDYDATA:actual_message})",
+          "Second":"(%{DATA:actual_message} %{HOSTNAME:postfix_client_hostname}\\[%{IP:postfix_client_ip}\\])",
+          "Third":"%{LOGLEVEL:loglevel_postfix}(: %{DATA:actual_message}(: %{INT:postfix_client_port} from ))%{HOSTNAME:postfix_client_hostname}?\\[%{IP:postfix_client_ip}\\]",
+          "Fourth":"(%{LOGLEVEL:loglevel_postfix}: )(hostname %{IP:postfix_client_ip}.%{HOSTNAME:postfix_client_hostname} )%{GREEDYDATA:actual_message}",
+          "Fifth":"%{DATA:actual_message}(<%{DATA:postfix_message_id}>)( )"
+        }
+      }
+    }
+  ]
+},
+"docs":[
+  {
+    "_source": {
+      "message": "processing message <216701d90$f69e5eb0$@com> for <abc@abc.com>"
+    }
+  }
+  ]
+}
