@@ -1,0 +1,26 @@
+POST _ingest/pipeline/_simulate
+{
+  "pipeline": {
+  "description" : "parse multiple patterns",
+  "processors": [
+    {
+      "grok": {
+        "field": "message",
+        "ignore_missing": true,
+        "patterns": ["(%{LOGLEVEL:loglevel_postfix}: )%{HOSTNAME:postfix_client_hostname}?\\[%{IP:postfix_client_ip}\\](:%{INT:postfix_client_port})?(: %{GREEDYDATA:actual_message})","%{GREEDYDATA:actual_message}"],
+        "pattern_definitions" : {
+          "LOGLEVEL_arg" : "%{LOGLEVEL}",
+          "other":"%{HOSTNAME}?\\[%{IP}\\](:%{INT})?"
+        }
+      }
+    }
+  ]
+},
+"docs":[
+  {
+    "_source": {
+      "message": "connect from unknown[173.239.196.151]"
+    }
+  }
+  ]
+}
